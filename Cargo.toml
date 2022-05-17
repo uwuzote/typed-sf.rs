@@ -1,6 +1,6 @@
 [package]
 name = "typed-sf"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Typed ready-to-use implementation of SmallF*ck language in Rust."
 license = "X11"
