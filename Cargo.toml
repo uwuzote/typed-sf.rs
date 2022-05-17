@@ -3,7 +3,7 @@ name = "typed-sf"
 version = "1.0.0"
 edition = "2021"
 description = "Typed ready-to-use implementation of SmallF*ck language in Rust."
-license = "X11 License"
+license = "X11"
 
 [dependencies]
 
