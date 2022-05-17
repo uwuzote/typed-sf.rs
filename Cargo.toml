@@ -1,0 +1,12 @@
+[package]
+name = "typed-sf"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+
+[features]
+default = ["require_docs"]
+
+require_docs = []
+no_std = []
