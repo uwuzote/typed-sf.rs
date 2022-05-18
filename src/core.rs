@@ -68,8 +68,8 @@ where
     type Run: StateTrait;
 }
 
-/// Alias for running Program on State
-pub type Run<Program, StateT> = <Program as Runner<
+/// Alias for running `Program` on `StateT`
+pub type Run<Program, StateT = DefaultState> = <Program as Runner<
     <StateT as StateTrait>::Left,
     <StateT as StateTrait>::Value,
     <StateT as StateTrait>::Right,
