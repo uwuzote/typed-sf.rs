@@ -76,4 +76,4 @@ pub type Run<Program, StateT = DefaultState> = <Program as Runner<
 >>::Run;
 
 /// Default state, alias for [`State`]`<`[`Nil`]`, Value, `[`Nil`]`>`.
-type DefaultState<Value = False> = State<Nil, Value, Nil>;
+pub type DefaultState<Value = False> = State<Nil, Value, Nil>;
