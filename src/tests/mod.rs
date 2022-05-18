@@ -1,5 +1,7 @@
 #![allow(warnings)]
 
+use crate::*;
+
 #[macro_export]
 macro_rules! eq_st {
     ($a:ty, ($bl:ty, $bv:ty, $br:ty)) => {
@@ -9,30 +11,11 @@ macro_rules! eq_st {
         );
     };
     ($a:ty, $b:ty) => {
-        assert_eq!(<$a as _State>::val(), <$b as _State>::val());
+        assert_eq!(<$a as StateTrait>::val(), <$b as StateTrait>::val());
     };
 }
 
-pub(super) mod prelude {
-    // #[allow(unused_imports)]
-    pub(crate) use crate::{
-        eq_st,
-        Cons,
-        Cycle,
-        DefaultState,
-        False,
-        Flip,
-        Left,
-        Nil,
-        Right,
-        Run,
-        State,
-        // traits
-        StateTrait,
-        True,
-        EOF,
-    };
-}
-
+mod complex;
 mod flip;
 mod left;
+mod utils;

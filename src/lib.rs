@@ -172,18 +172,29 @@ pub(crate) mod core;
 pub(crate) mod list;
 pub(crate) mod cmds {
     pub(crate) mod cycle;
+    pub use self::cycle::Cycle;
+
     pub(crate) mod eof;
+    pub use self::eof::EOF;
+
     pub(crate) mod flip;
+    pub use self::flip::Flip;
+
     pub(crate) mod left;
+    pub use left::Left;
+
     pub(crate) mod right;
+    pub use right::Right;
+
     pub(crate) mod utils;
+    pub use utils::*;
 }
 
-pub use crate::bit::{Bit, False, True};
-pub use crate::cmds::utils::{SetFalse, SetTrue};
-pub use crate::cmds::{cycle::Cycle, eof::EOF, flip::Flip, left::Left, right::Right};
-pub use crate::core::{Command, DefaultState, Run, Runner, State, StateTrait};
-pub use crate::list::{Cons, List, Nil};
+pub use crate::bit::*;
+pub use crate::cmds::utils::*;
+pub use crate::cmds::*;
+pub use crate::core::*;
+pub use crate::list::*;
 
 #[cfg(not(feature = "no_std"))]
 pub use crate::core::RuntimeState;

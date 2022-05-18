@@ -21,6 +21,7 @@ where
 
 impl List for Nil {
     #[cfg(not(feature = "no_std"))]
+    #[inline(always)]
     fn val() -> Vec<bool> {
         Vec::new()
     }
@@ -32,6 +33,7 @@ where
     Tail: List,
 {
     #[cfg(not(feature = "no_std"))]
+    #[inline(always)]
     fn val() -> Vec<bool> {
         let mut vec = Tail::val();
         vec.push(Value::val());

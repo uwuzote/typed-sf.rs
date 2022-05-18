@@ -1,4 +1,4 @@
-use super::prelude::*;
+use crate::*;
 
 #[allow(non_camel_case_types)]
 type p = Left<EOF>;

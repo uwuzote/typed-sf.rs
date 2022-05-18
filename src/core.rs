@@ -42,6 +42,7 @@ where
     type Right = RightG;
 
     #[cfg(not(feature = "no_std"))]
+    #[inline(always)]
     fn val() -> RuntimeState {
         (LeftG::val(), ValueG::val(), RightG::val())
     }
@@ -82,6 +83,7 @@ where
     type Right = Nil;
 
     #[cfg(not(feature = "no_std"))]
+    #[inline(always)]
     fn val() -> RuntimeState {
         (Vec::new(), Value::val(), Vec::new())
     }

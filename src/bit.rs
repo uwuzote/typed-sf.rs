@@ -22,6 +22,7 @@ pub struct False;
 impl Bit for True {
     type Neg = False;
 
+    #[inline(always)]
     fn val() -> bool {
         true
     }
@@ -30,6 +31,7 @@ impl Bit for True {
 impl Bit for False {
     type Neg = True;
 
+    #[inline(always)]
     fn val() -> bool {
         false
     }
