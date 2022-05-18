@@ -3,8 +3,11 @@ pub trait Bit {
     /// Result of negation of bit
     type Neg: Bit;
 
-    /// Real value of type.
+    /// `Real`, represented with rust's objects value of type.
     fn val() -> bool;
+
+    /// `Real` value of type.
+    fn new() -> Self;
 }
 
 /// Type-level True value, [`Bit`].
@@ -26,6 +29,11 @@ impl Bit for True {
     fn val() -> bool {
         true
     }
+
+    #[inline(always)]
+    fn new() -> Self {
+        True
+    }
 }
 
 impl Bit for False {
@@ -34,5 +42,10 @@ impl Bit for False {
     #[inline(always)]
     fn val() -> bool {
         false
+    }
+
+    #[inline(always)]
+    fn new() -> Self {
+        False
     }
 }

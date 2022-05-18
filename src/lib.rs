@@ -1,6 +1,7 @@
 #![cfg_attr(feature = "no_std", no_std)]
 #![cfg_attr(feature = "require_docs", forbid(missing_docs))]
 #![deny(warnings, clippy::all, clippy::pedantic)]
+#![allow(clippy::inline_always)]
 
 /*!
     Type-level implementation of [SF](https://esolangs.org/wiki/Smallfuck).

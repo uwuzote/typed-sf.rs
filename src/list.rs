@@ -1,11 +1,13 @@
 use crate::bit::Bit;
-use core::marker::PhantomData;
 
 /// Type-level linked list, enum-like of [`Nil`] and [`Cons`]
 pub trait List {
     #[cfg(not(feature = "no_std"))]
-    /// Real value of type.
+    /// `Real`, represented with rust's objects value of type.
     fn val() -> Vec<bool>;
+
+    /// `Real` value of type.
+    fn new() -> Self;
 }
 
 /// End of [`List`].
@@ -14,7 +16,7 @@ pub struct Nil;
 
 /// Node of list, consists of value ([`Bit`]) and tail -- [`List`].
 #[derive(Debug)]
-pub struct Cons<Value, Tail>(PhantomData<(Value, Tail)>)
+pub struct Cons<Value, Tail>(Value, Tail)
 where
     Value: Bit,
     Tail: List;
@@ -24,6 +26,11 @@ impl List for Nil {
     #[inline(always)]
     fn val() -> Vec<bool> {
         Vec::new()
+    }
+
+    #[inline(always)]
+    fn new() -> Self {
+        Nil
     }
 }
 
@@ -39,5 +46,10 @@ where
         vec.push(Value::val());
 
         vec
+    }
+
+    #[inline(always)]
+    fn new() -> Self {
+        Cons(Value::new(), Tail::new())
     }
 }

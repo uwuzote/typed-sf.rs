@@ -1,5 +1,3 @@
-use core::marker::PhantomData;
-
 use crate::bit::{Bit, False};
 use crate::list::{List, Nil};
 
@@ -10,22 +8,25 @@ pub type RuntimeState = (Vec<bool>, bool, Vec<bool>);
 /// Single-type trait for [`State`] type, used to get Left, Value
 /// and Rigth types.
 pub trait StateTrait {
-    /// Left type of [`State`].
+    /// Left type ([`List`]).
     type Left: List;
-    /// Value type of [`State`].
+    /// Value type ([`Bit`]).
     type Value: Bit;
-    /// Right type of [`State`].
+    /// Right type ([`List`]).
     type Right: List;
 
+    /// `Real` value of type.
+    fn new() -> Self;
+
     #[cfg(not(feature = "no_std"))]
-    /// `Real` value of [`State`].
+    /// `Real`, represented with rust's objects value of type.
     fn val() -> RuntimeState;
 }
 
 /// Zipper-list, representing current state of program.
 /// Consists of left-hand [`List`], Value -- [`Bit`] and right-hand [`List`].
 #[derive(Debug)]
-pub struct State<Left, Value, Right>(PhantomData<(Left, Value, Right)>)
+pub struct State<Left, Value, Right>(Left, Value, Right)
 where
     Left: List,
     Value: Bit,
@@ -45,6 +46,11 @@ where
     #[inline(always)]
     fn val() -> RuntimeState {
         (LeftG::val(), ValueG::val(), RightG::val())
+    }
+
+    #[inline(always)]
+    fn new() -> Self {
+        State(LeftG::new(), ValueG::new(), RightG::new())
     }
 }
 
@@ -70,7 +76,7 @@ pub type Run<Program, StateT> = <Program as Runner<
 >>::Run;
 
 /// Default state, alias for [`State`]`<`[`Nil`]`, Value, `[`Nil`]`>`.
-pub struct DefaultState<Value = False>(PhantomData<Value>)
+pub struct DefaultState<Value = False>(Value)
 where
     Value: Bit;
 
@@ -87,6 +93,9 @@ where
     fn val() -> RuntimeState {
         (Vec::new(), Value::val(), Vec::new())
     }
-}
 
-// pub type DefaultState = State<Nil, FillBit, Nil>;
+    #[inline(always)]
+    fn new() -> Self {
+        DefaultState(Value::new())
+    }
+}
