@@ -76,26 +76,4 @@ pub type Run<Program, StateT = DefaultState> = <Program as Runner<
 >>::Run;
 
 /// Default state, alias for [`State`]`<`[`Nil`]`, Value, `[`Nil`]`>`.
-pub struct DefaultState<Value = False>(Value)
-where
-    Value: Bit;
-
-impl<Value> StateTrait for DefaultState<Value>
-where
-    Value: Bit,
-{
-    type Left = Nil;
-    type Value = Value;
-    type Right = Nil;
-
-    #[cfg(not(feature = "no_std"))]
-    #[inline(always)]
-    fn val() -> RuntimeState {
-        (Vec::new(), Value::val(), Vec::new())
-    }
-
-    #[inline(always)]
-    fn new() -> Self {
-        DefaultState(Value::new())
-    }
-}
+type DefaultState<Value = False> = State<Nil, Value, Nil>;
