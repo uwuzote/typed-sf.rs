@@ -3,7 +3,9 @@ name = "typed-sf"
 version = "1.0.3"
 edition = "2021"
 description = "Typed ready-to-use implementation of SmallF*ck language in Rust."
-license = "X11"
+license = "MIT"
+readme = "crates-io.README.md"
+repository = "https://github.com/Zote-the-Mighty-4o2/typed-sf.rs"
 
 [features]
 default = ["require_docs"]

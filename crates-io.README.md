@@ -1,7 +1,4 @@
-# typed-sf.rs
-### Simple, ready-to-use realization of [SmallF*ck](https://esolangs.org/wiki/Smallfuck) esoteric language.
-
-Hightly inspired by [this article](https://sdleffler.github.io/RustTypeSystemTuringComplete/).
+Simple, ready-to-use typed realization of [SmallF*ck](https://esolangs.org/wiki/Smallfuck) esoteric language. Highly inspired by [this article](https://sdleffler.github.io/RustTypeSystemTuringComplete/).
 
 ```rust
 use typed_sf::*;
@@ -24,5 +21,5 @@ assert_eq!(
 ```
 
 ## Links:
-`crates.io` page: https://crates.io/crates/typed-sf
+Github repo: https://github.com/Zote-the-Mighty-4o2/typed-sf.rs
 `docs.rs` page: https://docs.rs/typed-sf/
