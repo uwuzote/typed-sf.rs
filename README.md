@@ -1,4 +1,4 @@
-Simple, ready-to-use typed version of [SmallF*ck](https://esolangs.org/wiki/Smallfuck) esoteric language. Hightly inspired by [this article](https://sdleffler.github.io/RustTypeSystemTuringComplete/).
+Simple, ready-to-use typed version of [SmallF*ck](https://esolangs.org/wiki/Smallfuck) esoteric language. Highly inspired by [this article](https://sdleffler.github.io/RustTypeSystemTuringComplete/).
 
 ```rust
 use typed_sf::*;

@@ -5,13 +5,13 @@
 
 /*!
     Type-level implementation of [SF](https://esolangs.org/wiki/Smallfuck).
-    Prooving that type-system turing-complete. Higtly inspired
+    Proving that type-system turing-complete. Highly inspired
     by [this article](https://sdleffler.github.io/RustTypeSystemTuringComplete/).
 
     # Features
     `typed-sf` supports "no_std" feature with limitations. Runtime
-    representation of [`List`]'s and [`State`][StateTrait]'s unavaliable
-    (they are using [`Vec`] to represent theyself).
+    representation of [`List`]'s and [`State`][StateTrait]'s unavailable
+    (they are using [`Vec`] to represent themselves).
 
     Full list of unsupported features:
     * [`List::val()`] (That includes [`Nil`] and [`Cons`]).
@@ -22,7 +22,7 @@
     If You want to contrubute, feel free to turn off this default feature.
 
     # How it works
-    First, where's some traits what i'm calling type-level enums ([`Bit`], [`List`]).
+    First, there's some traits that i'm calling type-level enums ([`Bit`], [`List`]).
     Have a look at it:
     ```
     # #[derive(PartialEq, Debug)]
@@ -135,8 +135,8 @@
     );
     ```
     That's basically how [`Runner`]`<`[`Left`][List]`, `[`Value`][Bit]`, `[`Right`][List]`>` works.
-    But commands such as [`Left`] takes an generic argument, so it runs next command on
-    modified state which does same and so on...
+    But commands such as [`Left`] take a generic argument, so it runs next command on
+    modified state which does the same and so on...
 
     # Examples
     Basic usage
