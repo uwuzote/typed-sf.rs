@@ -21,5 +21,5 @@ assert_eq!(
 ```
 
 ## Links:
-Github repo: https://github.com/Zote-the-Mighty-4o2/typed-sf.rs
+Github repo: https://github.com/Zote-the-Mighty-4o2/typed-sf.rs \
 `docs.rs` page: https://docs.rs/typed-sf/
