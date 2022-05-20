@@ -24,5 +24,5 @@ assert_eq!(
 ```
 
 ## Links:
-`crates.io` page: https://crates.io/crates/typed-sf
+`crates.io` page: https://crates.io/crates/typed-sf \
 `docs.rs` page: https://docs.rs/typed-sf/
