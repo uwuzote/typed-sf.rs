@@ -1,0 +1,44 @@
+# File used by cargo-make
+
+[tasks.test]
+command = "cargo"
+args = ["test", "--features", "require_docs"]
+
+[tasks.check]
+dependencies = ["check-check", "check-clippy"]
+
+[tasks.check-check]
+command = "cargo"
+args = ["check", "--features", "require_docs"]
+
+[tasks.check-clippy]
+command = "cargo"
+args = ["clippy", "--features", "require_docs"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.local-doc]
+command = "cargo"
+args = ["doc"]
+
+[tasks.local-build]
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.format]
+command = "cargo"
+args = ["fmt"]
+
+
+[tasks.release]
+dependencies = [
+#    "clean",
+    "format",
+    "check",
+    "test"
+]
+
+[tasks.local]
+dependencies = ["local-doc", "local-build"]
