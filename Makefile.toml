@@ -4,7 +4,7 @@
 command = "cargo"
 args = ["test", "--features", "require_docs"]
 
-[tasks.check]
+[tasks.cargo-check]
 dependencies = ["check-check", "check-clippy"]
 
 [tasks.check-check]
@@ -32,12 +32,16 @@ command = "cargo"
 args = ["fmt"]
 
 
-[tasks.release]
+[tasks.check]
 dependencies = [
-#    "clean",
-    "format",
-    "check",
+    "cargo-check",
     "test"
+]
+
+[tasks.prepare]
+dependencies = [
+    "format",
+    "check"
 ]
 
 [tasks.local]
