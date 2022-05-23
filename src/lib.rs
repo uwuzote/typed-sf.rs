@@ -1,10 +1,7 @@
 #![cfg_attr(feature = "no_std", no_std)]
-#![cfg_attr(
-    feature = "require_docs",
-    forbid(missing_docs),
-    doc(test(attr(deny(warnings))))
-)]
+#![cfg_attr(feature = "require_docs", deny(missing_docs))]
 #![deny(warnings, clippy::all, clippy::pedantic)]
+#![doc(test(attr(deny(warnings))))]
 #![allow(clippy::inline_always)]
 
 /*!
