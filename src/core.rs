@@ -43,12 +43,12 @@ where
     type Right = RightG;
 
     #[cfg(not(feature = "no_std"))]
-    #[inline(always)]
+    #[inline]
     fn val() -> RuntimeState {
         (LeftG::val(), ValueG::val(), RightG::val())
     }
 
-    #[inline(always)]
+    #[inline]
     fn new() -> Self {
         State(LeftG::new(), ValueG::new(), RightG::new())
     }

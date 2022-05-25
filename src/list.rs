@@ -23,12 +23,12 @@ where
 
 impl List for Nil {
     #[cfg(not(feature = "no_std"))]
-    #[inline(always)]
+    #[inline]
     fn val() -> Vec<bool> {
         Vec::new()
     }
 
-    #[inline(always)]
+    #[inline]
     fn new() -> Self {
         Nil
     }
@@ -40,7 +40,7 @@ where
     Tail: List,
 {
     #[cfg(not(feature = "no_std"))]
-    #[inline(always)]
+    #[inline]
     fn val() -> Vec<bool> {
         let mut vec = Tail::val();
         vec.push(Value::val());
@@ -48,7 +48,7 @@ where
         vec
     }
 
-    #[inline(always)]
+    #[inline]
     fn new() -> Self {
         Cons(Value::new(), Tail::new())
     }
