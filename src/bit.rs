@@ -18,10 +18,6 @@ pub struct True;
 #[derive(Debug)]
 pub struct False;
 
-// /// Default [`Bit`] for filling gaps ([`False`]).
-// #[allow(clippy::module_name_repetitions)]
-// pub type FillBit = False;
-
 impl Bit for True {
     type Neg = False;
 
