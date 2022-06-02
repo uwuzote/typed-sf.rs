@@ -7,11 +7,12 @@ pub struct EOF;
 
 impl Command for EOF {}
 
-impl<Left, Value, Right> Runner<Left, Value, Right> for EOF
+impl<Left, Value, Right, Default> Runner<Left, Value, Right, Default> for EOF
 where
     Left: List,
     Value: Bit,
     Right: List,
+    Default: Bit,
 {
-    type Run = State<Left, Value, Right>;
+    type Run = State<Left, Value, Right, Default>;
 }

@@ -7,7 +7,7 @@ macro_rules! eq_st {
     ($a:ty, ($bl:ty, $bv:ty, $br:ty)) => {
         assert_eq!(
             <$a as StateTrait>::val(),
-            <State<$bl, $bv, $br> as StateTrait>::val()
+            <State<$bl, $bv, $br, False> as StateTrait>::val()
         );
     };
     ($a:ty, $b:ty) => {

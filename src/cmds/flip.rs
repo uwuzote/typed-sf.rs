@@ -14,12 +14,13 @@ where
 
 impl<Next> Command for Flip<Next> where Next: Command {}
 
-impl<Left, Value, Right, Next> Runner<Left, Value, Right> for Flip<Next>
+impl<Left, Value, Right, Default, Next> Runner<Left, Value, Right, Default> for Flip<Next>
 where
     Left: List,
     Value: Bit,
     Right: List,
-    Next: Runner<Left, Value::Neg, Right>,
+    Default: Bit,
+    Next: Runner<Left, Value::Neg, Right, Default>,
 {
-    type Run = Run<Next, State<Left, Value::Neg, Right>>;
+    type Run = Run<Next, State<Left, Value::Neg, Right, Default>>;
 }

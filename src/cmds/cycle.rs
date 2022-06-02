@@ -1,6 +1,6 @@
 use core::marker::PhantomData;
 
-use crate::bit::{False, True};
+use crate::bit::{Bit, False, True};
 use crate::cmds::eof::EOF;
 use crate::core::{Command, Run, Runner, State, StateTrait};
 use crate::list::List;
@@ -21,27 +21,30 @@ where
 {
 }
 
-impl<Left, Right, Body, Next> Runner<Left, False, Right> for Cycle<Body, Next>
+impl<Left, Right, Body, Next, Default> Runner<Left, False, Right, Default> for Cycle<Body, Next>
 where
     Left: List,
     Right: List,
     Body: Command,
-    Next: Runner<Left, False, Right>,
+    Next: Runner<Left, False, Right, Default>,
+    Default: Bit,
 {
-    type Run = Run<Next, State<Left, False, Right>>;
+    type Run = Run<Next, State<Left, False, Right, Default>>;
 }
 
-impl<Left, Right, Body, Next> Runner<Left, True, Right> for Cycle<Body, Next>
+impl<Left, Right, Body, Default, Next> Runner<Left, True, Right, Default> for Cycle<Body, Next>
 where
     Left: List,
     Right: List,
-    Body: Runner<Left, True, Right>,
+    Body: Runner<Left, True, Right, Default>,
+    Default: Bit,
     Next: Command,
     Cycle<Body, Next>: Runner<
-        <<Body as Runner<Left, True, Right>>::Run as StateTrait>::Left,
-        <<Body as Runner<Left, True, Right>>::Run as StateTrait>::Value,
-        <<Body as Runner<Left, True, Right>>::Run as StateTrait>::Right,
+        <<Body as Runner<Left, True, Right, Default>>::Run as StateTrait>::Left,
+        <<Body as Runner<Left, True, Right, Default>>::Run as StateTrait>::Value,
+        <<Body as Runner<Left, True, Right, Default>>::Run as StateTrait>::Right,
+        <<Body as Runner<Left, True, Right, Default>>::Run as StateTrait>::Default,
     >,
 {
-    type Run = Run<Cycle<Body, Next>, Run<Body, State<Left, True, Right>>>;
+    type Run = Run<Cycle<Body, Next>, Run<Body, State<Left, True, Right, Default>>>;
 }
